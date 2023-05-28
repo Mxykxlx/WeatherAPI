@@ -20,7 +20,7 @@ import org.json.JSONObject;
 public class MainActivity extends AppCompatActivity {
 
     EditText city;
-    TextView temp, mintemp, maxtemp, humidity, weather, description;
+    TextView swa, temp, mintemp, maxtemp, humidity, weather, description;
     Button search, clear;
 
     @Override
@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void initialize() {
         city = findViewById(R.id.city);
+        swa = findViewById(R.id.swa);
         temp = findViewById(R.id.temp);
         mintemp = findViewById(R.id.mintemp);
         maxtemp = findViewById(R.id.maxtemp);
@@ -49,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
 
         search.setOnClickListener(v -> {
             String ct = city.getText().toString();
+            swa.setText(ct.toUpperCase());
             String key = "b5b3a5b2cd1493ce23ec5bc17dde1aba";
             String url ="https://api.openweathermap.org/data/2.5/weather?q="+ ct + "&appid=" + key;
 
