@@ -49,8 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         search.setOnClickListener(v -> {
-            String ct = city.getText().toString();
-            swa.setText(ct.toUpperCase());
+            String ct = city.getText().toString().trim();
             String key = "b5b3a5b2cd1493ce23ec5bc17dde1aba";
             String url ="https://api.openweathermap.org/data/2.5/weather?q="+ ct + "&appid=" + key;
 
@@ -72,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
                             String d = we.getString("description");
 
                             city.setText(null);
+                            swa.setText(ct.toUpperCase());
                             temp.setText(t);
                             mintemp.setText(min);
                             maxtemp.setText(max);
@@ -87,7 +87,8 @@ public class MainActivity extends AppCompatActivity {
                     },
 
                         error -> {
-                            Toast.makeText(this, "ERROR!!!", Toast.LENGTH_SHORT).show();
+                            city.setText(null);
+                            Toast.makeText(this, "Invalid Input!", Toast.LENGTH_SHORT).show();
                         });
 
             q.add(data);
